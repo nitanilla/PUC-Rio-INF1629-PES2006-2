@@ -2,7 +2,7 @@
 -- Autor: MV, RF
 -- Versão: 0.1
 -- Data da última modificação: 21/04/2017
--- Tamanho: 1412122 linhas
+-- Tamanho: 145 linhas
 
 -- Dados mutáveis compartilhados
 data = nil
