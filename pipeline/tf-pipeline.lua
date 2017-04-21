@@ -2,7 +2,7 @@
 -- Autor: MV, RF
 -- Versão: 0.1
 -- Data da última modificação: 21/04/2017
--- Tamanho: 132 linhas
+-- Tamanho: 145 linhas
 
 -- Funções
 
@@ -30,11 +30,11 @@ function filter_chars_and_normalize(str_data)
 end
 
 -- Recebe uma string e procura por palavras,
--- retornando um vetor de palavras (usando espaço em branco como separados)
+-- retornando um vetor de palavras (usando espaço em branco como separador)
 -- PRE: str_data é uma string não nula (Verificação: existe uma assertiva garantindo isto)
 -- POS: foi retornado um vetor com as palavras da string str_data (Verificação: o for presente na função contém a função table.insert, que realiza isso)
 function scan(str_data)
-	assert(str_data ~= nil, "A string que deveria ser filtrada esta nula no comeco da funcao scan")
+	assert(str_data ~= nil, "A string que deveria ser usada esta nula no comeco da funcao scan")
 	local iterator = str_data:gmatch("%S+")
 	local word_list = {}
 	
@@ -114,7 +114,7 @@ end
 
 -- Recebe um vetor e um intervalo a ser filtrado, 
 -- e retorna uma novo vetor contendo apenas os elementos do intervalo especificado
--- PRE: range_min e range_max são números inteiros, range_min <= range_max (Verificação: existem assertivas garantindo isto)
+-- PRE: input_array não é nulo, range_min e range_max são números inteiros, range_min <= range_max (Verificação: existem assertivas garantindo isto)
 -- POS: foi retornado o vetor contendo apenas os elementos do intervalo especificado (Verificação: o for deste método itera sobre o intervalo
 -- especificado e adiciona ao vetor que é retornado os elementos do intervalo)
 function filter_array(input_array, range_min, range_max)
