@@ -3,7 +3,7 @@
 
 ##### Professor: Julio Cesar Sampaio do Prado Leite
 ##### Alunos: Marcelo Vasconcelos (MV) - Matrícula 1411029
-#####         Renan da Fonte (RF) - Matrícula 1412122
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Renan da Fonte (RF) - Matrícula 1412122
 
 ##### Versão: 0.1
 ##### Data de atualização: 21/04/2017
