@@ -8,10 +8,11 @@
 
 -- Recebe um caminho para um arquivo e 
 -- retorna o conteúdo deste arquivo como uma string
--- PRE: path_to_file é um caminho de arquivo válido
--- POS: o conteúdo do arquivo lido foi retornado como uma string
+-- PRE: path_to_file é um caminho de arquivo válido (Verificação: existe uma assertiva garantindo isto)
+-- POS: o conteúdo do arquivo lido foi retornado como uma string (Verificação: a função read sempre retorna uma string referente ao conteúdo do arquivo aberto)
 function read_file(path_to_file)
 	local file = io.open(path_to_file, "r")
+	assert(file ~= nil, "Caminho do arquivo invalido")
 	local fileStr = file:read("*all")
 	file:close()
 	return fileStr
@@ -19,19 +20,21 @@ end
 
 -- Recebe uma string e retorna uma cópia sua onde
 -- todos os caracteres não-alfanuméricos foram substituídos por espaços
--- PRE: str_data é uma string não nula
+-- PRE: str_data é uma string não nula (Verificação: existe uma assertiva garantindo isto)
 -- POS: foi retornada uma cópia da string str_data, onde os caracteres não-alfanuméricos
--- foram substituídos por espaços, e as letras maiúsculas foram substituídas por letras minúsculas
+-- foram substituídos por espaços, e as letras maiúsculas foram substituídas por letras minúsculas (Verificação: gsub('%W',' ') transforma os caracteres não-numéricos
+-- em espaços em branco, e lower() transforma os caracteres maiúsculos em minúsculos)
 function filter_chars_and_normalize(str_data)
+	assert(str_data ~= nil, "A string que deveria ser filtrada esta nula no comeco da funcao filter_chars_and_normalize")
     return str_data:gsub('%W',' '):lower()
 end
 
 -- Recebe uma string e procura por palavras,
--- retornando um vetor de palavras
--- PRE: str_data é uma string não nula
--- POS: foi retornado um vetor com as palvras da string str_data
--- (usando espaço em branco como separados)
+-- retornando um vetor de palavras (usando espaço em branco como separados)
+-- PRE: str_data é uma string não nula (Verificação: existe uma assertiva garantindo isto)
+-- POS: foi retornado um vetor com as palavras da string str_data (Verificação: o for presente na função contém a função table.insert, que realiza isso)
 function scan(str_data)
+	assert(str_data ~= nil, "A string que deveria ser filtrada esta nula no comeco da funcao scan")
 	local iterator = str_data:gmatch("%S+")
 	local word_list = {}
 	
@@ -44,10 +47,11 @@ end
 
 -- Recebe um vetor de palavras e retorna uma cópia sem
 -- as palavras ignoradas (stop words)
--- PRE: word_list é um vetor não nulo e existe um arquivo no caminho "../stop_words.txt"
--- POS: foi retornado um vetor que não possui nenhum elemento que esteja presente no vetor
+-- PRE: word_list é um vetor não nulo e existe um arquivo no caminho "../stop_words.txt" (Verificação: existe uma assertiva garantindo isto)
+-- POS: foi retornado um vetor que não possui nenhum elemento que esteja presente no vetor (Verificação: o último for presente na função garante isso)
 -- de palavras ignoradas (stop words) lido no arquivo stop_words.txt
 function remove_stop_words(word_list)
+	assert(word_list ~= nil, "O vetor passado por referencia para a funcao remove_stop_words esta nulo")
 	local file = io.open("../stop_words.txt", "r")
 	local iterator = file:read("*all"):gmatch("([^,]+)")
 	local stop_words = {}
@@ -73,9 +77,10 @@ end
 
 -- Recebe um vetor de palavras e retorna uma tabela associando
 -- palavras a suas frequências de ocorrência
--- PRE: word_list é um vetor não nulo
--- POS: foi retornada uma tabela contendo cada palavra associada a sua frequência
+-- PRE: word_list é um vetor não nulo (Verificação: existe uma assertiva garantindo isto)
+-- POS: foi retornada uma tabela contendo cada palavra associada a sua frequência (Verificação: word_freqs é uma tabela, preenchida com estas informações, que é sempre retornada)
 function frequencies(word_list)
+	assert(word_list ~= nil, "O vetor passado por referencia para a funcao frequencies esta nulo")
 	word_freqs = {}
 	
     for key, word in ipairs(word_list) do
@@ -91,9 +96,10 @@ end
 
 -- Recebe uma tabela de palavras e suas frequências
 -- e retorna um vetor com os valores da tabela, ordenados pela frequência
--- PRE: word_freq é uma tabela não nula
--- POS: foi retornado um vetor que contém os valores de word_freq, ordenados pela frequência
+-- PRE: word_freq é uma tabela não nula (Verificação: existe uma assertiva garantindo isto)
+-- POS: foi retornado um vetor que contém os valores de word_freq, ordenados pela frequência (Verificação: a função table.sort realiza isso)
 function sort(word_freq)
+	assert(word_freq ~= nil, "A tabela passada por referencia para a funcao sort esta nula")
 	sorted_word_freq = {}
 	
 	for key,element in pairs(word_freq) do
@@ -105,20 +111,16 @@ function sort(word_freq)
 	return sorted_word_freq
 end
 
--- Recebe um vetor de palavras e frequências e imprime
--- cada entrada no formato "palavra" - "frequência", na ordem presente no vetor
--- PRE: word_freqs é um vetor não nulo
--- POS: foram impressas todas as palavras/frequências presentes no vetor word_freqs
-function print_all(word_freqs)
-	for key,element in ipairs(word_freqs) do
-	   print(element.word .. " - " .. element.frequency)
-	end
-end
 
 -- Recebe um vetor e um intervalo a ser filtrado, 
 -- e retorna uma novo vetor contendo apenas os elementos do intervalo especificado
--- PRE: range_min e range_max são números inteiros, input_array é um vetor não nulo de tamanho >= range_max, range_min <= range_max
+-- PRE: range_min e range_max são números inteiros, range_min <= range_max (Verificação: existem assertivas garantindo isto)
+-- POS: foi retornado o vetor contendo apenas os elementos do intervalo especificado (Verificação: o for deste método itera sobre o intervalo
+-- especificado e adiciona ao vetor que é retornado os elementos do intervalo)
 function filter_array(input_array, range_min, range_max)
+	assert(input_array ~= nil, "O vetor passado por referencia para a funcao filter_array esta nulo")
+	assert(range_min <= range_max, "O segundo parametro (range_min) e maior que o terceiro (range_max)")
+	
 	filtered_array = {}
 	
 	for index = range_min, range_max do
@@ -128,5 +130,16 @@ function filter_array(input_array, range_min, range_max)
 	return filtered_array
 end
 
+-- Recebe um vetor de palavras e frequências e imprime
+-- cada entrada no formato "palavra" - "frequência", na ordem presente no vetor
+-- PRE: word_freqs é um vetor não nulo (Verificação: existe uma assertiva garantindo isto)
+-- POS: foram impressas todas as palavras/frequências presentes no vetor word_freqs (Verificação: o for presente na função realiza isso)
+function print_all(word_freqs)
+	assert(word_freqs ~= nil, "O vetor passado por referencia para a funcao print_all esta nulo")
+	for key,element in ipairs(word_freqs) do
+	   print(element.word .. " - " .. element.frequency)
+	end
+end
+
 -- Programa
-print_all(filter_array(sort(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(arg[0])))))), 0, 25))
+print_all(filter_array(sort(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(arg[1])))))), 0, 25))
