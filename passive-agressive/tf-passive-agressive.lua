@@ -157,4 +157,5 @@ end
 
 -- Programa
 assert(arg[1] ~= nil, "Nao foi passado um caminho para o arquivo")
-print_all(filter_array(sort(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(arg[1])))))), 0, 25))
+
+xpcall(function() print_all(filter_array(sort(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(arg[1])))))), 0, 25)) end, function(errorInfo) print("Erro: " .. errorInfo) end)
