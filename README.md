@@ -48,7 +48,32 @@
  
  Data: 21/04/2017
  
+    -------------------
+ 
+ - pipeline/tf-passive-agressive.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Passive Agressive
+ 
+ Autor: MV, RF
+ 
+ Data: 21/04/2017
+ 
+    -------------------
+ 
+ - pipeline/tf-cookbook.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Cookbook
+ 
+ Autor: MV, RF
+ 
+ Data: 21/04/2017
 
+   -------------------
+ 
+ - pipeline/tf-kick-forward.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Kick Forward
+ 
+ Autor: MV, RF
+ 
+ Data: 22/04/2017
+ 
 ### Livro diário (MV e RF):
 
- 21/04/2017: Estudo de Lua; Criação do repositório no Github; Criação da primeira versão do estilo Pipeline, a partir do código do repositório "crista/exercises-in-programming-style"; Criação do arquivo README.md e importação do arquivo de palavras ignoradas, dos arquivos de teste
+ 22/04/2017: Criação da primeira versão do código do programa de contagem de frequências em texto, usando o padrão Kick Forward.
+ 
+ 21/04/2017: Estudo de Lua; Criação do repositório no Github; Criação da primeira versão dos programas de contagem de frequências em texto usando os padrões Pipeline, Cookbook e Passive Agressive, a partir do código do repositório "crista/exercises-in-programming-style"; Criação do arquivo README.md e importação do arquivo de palavras ignoradas, dos arquivos de teste
