@@ -48,7 +48,7 @@
  
  Data: 21/04/2017
  
-    -------------------
+ -------------------
  
  - pipeline/tf-passive-agressive.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Passive Agressive
  
@@ -56,15 +56,15 @@
  
  Data: 21/04/2017
  
-    -------------------
+ -------------------
  
  - pipeline/tf-cookbook.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Cookbook
  
  Autor: MV, RF
  
  Data: 21/04/2017
-
-   -------------------
+ 
+ -------------------
  
  - pipeline/tf-kick-forward.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Kick Forward
  
