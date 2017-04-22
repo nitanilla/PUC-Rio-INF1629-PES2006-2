@@ -6,7 +6,7 @@
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Renan da Fonte (RF) - Matrícula 1412122
 
 ##### Versão: 0.1
-##### Data de atualização: 21/04/2017
+##### Data de atualização: 22/04/2017
 
 ### Conteúdo do repositório:
 
@@ -14,7 +14,7 @@
  
  Autores: MV, RF
  
- Data: 21/04/2017
+ Data: 22/04/2017
  
  -------------------
  
