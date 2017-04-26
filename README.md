@@ -6,7 +6,7 @@
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Renan da Fonte (RF) - Matrícula 1412122
 
 ##### Versão: 0.1
-##### Data de atualização: 22/04/2017
+##### Data de atualização: 25/04/2017
 
 ### Conteúdo do repositório:
 
@@ -14,7 +14,7 @@
  
  Autores: MV, RF
  
- Data: 22/04/2017
+ Data: 25/04/2017
  
  -------------------
  
@@ -50,7 +50,7 @@
  
  -------------------
  
- - pipeline/tf-passive-agressive.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Passive Agressive
+ - passive-agressive/tf-passive-agressive.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Passive Agressive
  
  Autor: MV, RF
  
@@ -58,7 +58,7 @@
  
  -------------------
  
- - pipeline/tf-cookbook.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Cookbook
+ - cookbook/tf-cookbook.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Cookbook
  
  Autor: MV, RF
  
@@ -66,13 +66,15 @@
  
  -------------------
  
- - pipeline/tf-kick-forward.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Kick Forward
+ - kick-forward/tf-kick-forward.lua: código fonte da implementação em Lua do programa de contagem de frequências em texto, usando o estilo Kick Forward
  
  Autor: MV, RF
  
  Data: 22/04/2017
  
 ### Livro diário (MV e RF):
+
+ 25/04/2017: Correção do nome das pastas dos códigos fontes no arquivo README.md
 
  22/04/2017: Criação da primeira versão do código do programa de contagem de frequências em texto, usando o padrão Kick Forward.
  
