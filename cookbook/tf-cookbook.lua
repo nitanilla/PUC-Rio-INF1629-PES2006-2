@@ -11,7 +11,7 @@ word_freqs = nil
 
 -- Funções
 
--- Recebe um caminho para um arquivo e 
+-- Recebe um caminho para um arquivo e
 -- armazena o conteúdo deste arquivo como uma string na variável global data
 -- PRE: path_to_file é um caminho de arquivo válido (Verificação: existe uma assertiva garantindo isto)
 -- POS: o conteúdo do arquivo lido foi armazenado como uma string na variável global data
@@ -40,7 +40,7 @@ function scan()
 	assert(data ~= nil, "A string que deveria ser usada esta nula no comeco da funcao scan")
 	local iterator = data:gmatch("%S+")
 	words = {}
-	
+
 	for element in iterator do
 	   table.insert(words, element)
 	end
@@ -54,19 +54,21 @@ function remove_stop_words()
 	local file = io.open("../stop_words.txt", "r")
 	local iterator = file:read("*all"):gmatch("([^,]+)")
 	local stop_words = {}
-	
+
 	for element in iterator do
 		table.insert(stop_words, element)
 	end
-	
-	for ascii_code = 97, 122 do 
+
+	for ascii_code = 97, 122 do
 		table.insert(stop_words, string.char(ascii_code))
 	end
-	
-	for word_key, word in ipairs(words) do
+
+	for word_index = #words, 1, -1 do
 		for stopword_key, stop_word in ipairs(stop_words) do
+			local word = words[word_index]
+
 			if(word == stop_word) then
-				table.remove(words, word_key)
+				table.remove(words, word_index)
 			end
 		end
 	end
@@ -78,7 +80,7 @@ end
 function frequencies()
 	assert(words ~= nil, "O vetor words esta nulo no inicio da funcao frequencies")
 	word_freqs = {}
-	
+
     for key, word in ipairs(words) do
         if word_freqs[word] ~= nil then
             word_freqs[word].frequency = word_freqs[word].frequency + 1
@@ -95,18 +97,18 @@ end
 function sort()
 	assert(word_freqs ~= nil, "A tabela passada por referencia para a funcao sort esta nula")
 	sorted_word_freqs = {}
-	
+
 	for key,element in pairs(word_freqs) do
 		table.insert(sorted_word_freqs, element)
 	end
-	
+
 	table.sort(sorted_word_freqs, function(a, b) return a.frequency > b.frequency end)
-	
+
 	word_freqs = sorted_word_freqs
 end
 
 
--- Recebe um intervalo a ser filtrado, 
+-- Recebe um intervalo a ser filtrado,
 -- e substitui o vetor word_freqs por um novo vetor contendo apenas os elementos do intervalo especificado
 -- PRE: word_freqs não é nulo, range_min e range_max são números inteiros, range_min <= range_max (Verificação: existem assertivas garantindo isto)
 -- POS: o vetor foi atualizado, e passou a conter apenas os elementos do intervalo especificado (Verificação: o for deste método itera sobre o intervalo
@@ -114,13 +116,13 @@ end
 function filter_word_freqs(range_min, range_max)
 	assert(word_freqs ~= nil, "O vetor passado por referencia para a funcao filter_array esta nulo")
 	assert(range_min <= range_max, "O segundo parametro (range_min) e maior que o terceiro (range_max)")
-	
+
 	filtered_array = {}
-	
+
 	for index = range_min, range_max do
 		table.insert(filtered_array, word_freqs[index])
 	end
-	
+
 	word_freqs = filtered_array
 end
 

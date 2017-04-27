@@ -6,7 +6,7 @@
 
 -- Funções
 
--- Recebe um caminho para um arquivo e 
+-- Recebe um caminho para um arquivo e
 -- retorna o conteúdo deste arquivo como uma string
 -- PRE: path_to_file é um caminho de arquivo válido (Verificação: existe uma assertiva garantindo isto)
 -- POS: o conteúdo do arquivo lido foi retornado como uma string (Verificação: a função read sempre retorna uma string referente ao conteúdo do arquivo aberto)
@@ -40,11 +40,11 @@ function scan(str_data)
 	assert(type(str_data) == "string", "A string que deveria ser usada nao eh uma string no comeco da funcao scan")
 	local iterator = str_data:gmatch("%S+")
 	local word_list = {}
-	
+
 	for element in iterator do
 	   table.insert(word_list, element)
 	end
-	
+
 	return word_list
 end
 
@@ -56,27 +56,29 @@ end
 function remove_stop_words(word_list)
 	assert(word_list ~= nil, "O vetor passado por referencia para a funcao remove_stop_words esta nulo")
 	assert(type(word_list) == "table", "O vetor que deveria ser usado nao eh um table no comeco da funcao remove_stop_words")
-	
+
 	local file = io.open("../stop_words.txt", "r")
 	local iterator = file:read("*all"):gmatch("([^,]+)")
 	local stop_words = {}
-	
+
 	for element in iterator do
 		table.insert(stop_words, element)
 	end
-	
-	for ascii_code = 97, 122 do 
+
+	for ascii_code = 97, 122 do
 		table.insert(stop_words, string.char(ascii_code))
 	end
-	
-	for word_key, word in ipairs(word_list) do
+
+	for word_index = #word_list, 1, -1 do
 		for stopword_key, stop_word in ipairs(stop_words) do
+			local word = word_list[word_index]
+
 			if(word == stop_word) then
-				table.remove(word_list, word_key)
+				table.remove(word_list, word_index)
 			end
 		end
 	end
-	
+
 	return word_list
 end
 
@@ -87,9 +89,9 @@ end
 function frequencies(word_list)
 	assert(word_list ~= nil, "O vetor passado por referencia para a funcao frequencies esta nulo")
 	assert(type(word_list) == "table", "O vetor passado por referencia para a funcao frequencies nao eh um table")
-	
+
 	word_freqs = {}
-	
+
     for key, word in ipairs(word_list) do
         if word_freqs[word] ~= nil then
             word_freqs[word].frequency = word_freqs[word].frequency + 1
@@ -97,7 +99,7 @@ function frequencies(word_list)
             word_freqs[word] = {["word"] = word, ["frequency"] = 1}
 		end
 	end
-	
+
     return word_freqs
 end
 
@@ -108,20 +110,20 @@ end
 function sort(word_freq)
 	assert(word_freq ~= nil, "A tabela passada por referencia para a funcao sort esta nula")
 	assert(type(word_freq) == "table", "O vetor passado por referencia para a funcao sort nao eh um table")
-	
+
 	sorted_word_freq = {}
-	
+
 	for key,element in pairs(word_freq) do
 		table.insert(sorted_word_freq, element)
 	end
-	
+
 	table.sort(sorted_word_freq, function(a, b) return a.frequency > b.frequency end)
-	
+
 	return sorted_word_freq
 end
 
 
--- Recebe um vetor e um intervalo a ser filtrado, 
+-- Recebe um vetor e um intervalo a ser filtrado,
 -- e retorna uma novo vetor contendo apenas os elementos do intervalo especificado
 -- PRE: input_array não é nulo, range_min e range_max são números inteiros, range_min <= range_max (Verificação: existem assertivas garantindo isto)
 -- POS: foi retornado o vetor contendo apenas os elementos do intervalo especificado (Verificação: o for deste método itera sobre o intervalo
@@ -132,13 +134,13 @@ function filter_array(input_array, range_min, range_max)
 	assert(type(input_array) == "table", "input_array nao eh uma table")
 	assert(type(range_min) == "number", "range_min nao eh um numero")
 	assert(type(range_max) == "number", "range_max nao eh um numero")
-	
+
 	filtered_array = {}
-	
+
 	for index = range_min, range_max do
 		table.insert(filtered_array, input_array[index])
 	end
-	
+
 	return filtered_array
 end
 
@@ -149,7 +151,7 @@ end
 function print_all(word_freqs)
 	assert(word_freqs ~= nil, "O vetor passado por referencia para a funcao print_all esta nulo")
 	assert(type(word_freqs) == "table", "word_freqs nao eh um table no inicio da funcao print_all")
-	
+
 	for key,element in ipairs(word_freqs) do
 	   print(element.word .. " - " .. element.frequency)
 	end
