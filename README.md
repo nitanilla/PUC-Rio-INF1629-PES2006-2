@@ -6,7 +6,7 @@
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Renan da Fonte (RF) - Matrícula 1412122
 
 ##### Versão: 0.1
-##### Data de atualização: 25/04/2017
+##### Data de atualização: 27/04/2017
 
 ### Conteúdo do repositório:
 
@@ -14,7 +14,7 @@
  
  Autores: MV, RF
  
- Data: 25/04/2017
+ Data: 27/04/2017
  
  -------------------
  
@@ -46,7 +46,7 @@
  
  Autor: MV, RF
  
- Data: 21/04/2017
+ Data: 27/04/2017
  
  -------------------
  
@@ -54,7 +54,7 @@
  
  Autor: MV, RF
  
- Data: 21/04/2017
+ Data: 27/04/2017
  
  -------------------
  
@@ -62,7 +62,7 @@
  
  Autor: MV, RF
  
- Data: 21/04/2017
+ Data: 27/04/2017
  
  -------------------
  
@@ -70,9 +70,11 @@
  
  Autor: MV, RF
  
- Data: 22/04/2017
+ Data: 27/04/2017
  
 ### Livro diário (MV e RF):
+
+ 27/04/2017: Correção de bug ao remover palavras ignoradas que fazia com que, ao remover uma palavra ignorada, a próxima palavra permanecesse caso também tivesse que ser ignorada
 
  25/04/2017: Correção do nome das pastas dos códigos fontes no arquivo README.md
 
