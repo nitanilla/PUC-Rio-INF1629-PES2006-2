@@ -1,4 +1,4 @@
-# PUC-Rio-INF1629-PES2006-2
+﻿# PUC-Rio-INF1629-PES2006-2
 
 
 ##### Professor: Julio Cesar Sampaio do Prado Leite
@@ -14,7 +14,7 @@
  
  Autores: MV, RF
  
- Data: 27/04/2017
+ Data: 02/05/2017
  
  -------------------
  
@@ -46,7 +46,23 @@
  
  Autor: MV, RF
  
- Data: 27/04/2017
+ Data: 02/05/2017
+
+   -------------------
+ 
+ - pipeline/pipeline.xml: diagrama de funções da implementação pipeline em formato xml
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
+ 
+ -------------------
+ 
+ - pipeline/pipeline.png: diagrama de funções da implementação pipeline em formato png
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
  
  -------------------
  
@@ -54,7 +70,23 @@
  
  Autor: MV, RF
  
- Data: 27/04/2017
+ Data: 02/05/2017
+ 
+ -------------------
+
+ - passive-agressive/passive-agressive.xml: diagrama de funções da implementação passive-agressive em formato xml
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
+ 
+ -------------------
+ 
+ - passive-agressive/passive-agressive.png: diagrama de funções da implementação passive-agressive em formato png
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
  
  -------------------
  
@@ -62,7 +94,23 @@
  
  Autor: MV, RF
  
- Data: 27/04/2017
+ Data: 02/05/2017
+ 
+ -------------------
+
+ - cookbook/cookbook.xml: diagrama de funções da implementação cookbook em formato xml
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
+ 
+ -------------------
+ 
+ - cookbook/cookbook.png: diagrama de funções da implementação cookbook em formato png
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
  
  -------------------
  
@@ -70,9 +118,25 @@
  
  Autor: MV, RF
  
- Data: 27/04/2017
+ Data: 02/05/2017
+ 
+ - kick-forward/kick-forward.xml: diagrama de funções da implementação kick-forward em formato xml
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
+ 
+ -------------------
+ 
+ - kick-forward/kick-forward.png: diagrama de funções da implementação kick-forward em formato png
+ 
+ Autor: MV, RF
+ 
+ Data: 02/05/2017
  
 ### Livro diário (MV e RF):
+
+ 02/05/2017: Criação dos diagramas de função para a verificação das regras do trabalho e adequação do código fonte para a criação dos diagramas (em cada implementação passou a existir uma função main que executa o programa). A regra do 3-6 não foi seguida por conta das restrições dos 4 estilos usados.
 
  27/04/2017: Correção de bug ao remover palavras ignoradas que fazia com que, ao remover uma palavra ignorada, a próxima palavra permanecesse caso também tivesse que ser ignorada
 
