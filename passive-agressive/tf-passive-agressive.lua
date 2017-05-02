@@ -1,15 +1,15 @@
 -- tf-passive-agressive.lua
 -- Autor: MV, RF
--- Versão: 0.1
--- Data da última modificação: 21/04/2017
+-- VersÃ£o: 0.1
+-- Data da Ãºltima modificaÃ§Ã£o: 21/04/2017
 -- Tamanho: 145 linhas
 
--- Funções
+-- FunÃ§Ãµes
 
 -- Recebe um caminho para um arquivo e
--- retorna o conteúdo deste arquivo como uma string
--- PRE: path_to_file é um caminho de arquivo válido (Verificação: existe uma assertiva garantindo isto)
--- POS: o conteúdo do arquivo lido foi retornado como uma string (Verificação: a função read sempre retorna uma string referente ao conteúdo do arquivo aberto)
+-- retorna o conteÃºdo deste arquivo como uma string
+-- PRE: path_to_file Ã© um caminho de arquivo vÃ¡lido (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: o conteÃºdo do arquivo lido foi retornado como uma string (VerificaÃ§Ã£o: a funÃ§Ã£o read sempre retorna uma string referente ao conteÃºdo do arquivo aberto)
 function read_file(path_to_file)
 	assert(type(path_to_file) == "string", "O caminho passado nao eh uma string")
 	local file = io.open(path_to_file, "r")
@@ -19,12 +19,12 @@ function read_file(path_to_file)
 	return fileStr
 end
 
--- Recebe uma string e retorna uma cópia sua onde
--- todos os caracteres não-alfanuméricos foram substituídos por espaços
--- PRE: str_data é uma string não nula (Verificação: existe uma assertiva garantindo isto)
--- POS: foi retornada uma cópia da string str_data, onde os caracteres não-alfanuméricos
--- foram substituídos por espaços, e as letras maiúsculas foram substituídas por letras minúsculas (Verificação: gsub('%W',' ') transforma os caracteres não-numéricos
--- em espaços em branco, e lower() transforma os caracteres maiúsculos em minúsculos)
+-- Recebe uma string e retorna uma cÃ³pia sua onde
+-- todos os caracteres nÃ£o-alfanumÃ©ricos foram substituÃ­dos por espaÃ§os
+-- PRE: str_data Ã© uma string nÃ£o nula (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: foi retornada uma cÃ³pia da string str_data, onde os caracteres nÃ£o-alfanumÃ©ricos
+-- foram substituÃ­dos por espaÃ§os, e as letras maiÃºsculas foram substituÃ­das por letras minÃºsculas (VerificaÃ§Ã£o: gsub('%W',' ') transforma os caracteres nÃ£o-numÃ©ricos
+-- em espaÃ§os em branco, e lower() transforma os caracteres maiÃºsculos em minÃºsculos)
 function filter_chars_and_normalize(str_data)
 	assert(str_data ~= nil, "A string que deveria ser filtrada esta nula no comeco da funcao filter_chars_and_normalize")
     assert(type(str_data) == "string", "A string que deveria ser filtrada nao eh uma string no comeco da funcao filter_chars_and_normalize")
@@ -32,9 +32,9 @@ function filter_chars_and_normalize(str_data)
 end
 
 -- Recebe uma string e procura por palavras,
--- retornando um vetor de palavras (usando espaço em branco como separador)
--- PRE: str_data é uma string não nula (Verificação: existe uma assertiva garantindo isto)
--- POS: foi retornado um vetor com as palavras da string str_data (Verificação: o for presente na função contém a função table.insert, que realiza isso)
+-- retornando um vetor de palavras (usando espaÃ§o em branco como separador)
+-- PRE: str_data Ã© uma string nÃ£o nula (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: foi retornado um vetor com as palavras da string str_data (VerificaÃ§Ã£o: o for presente na funÃ§Ã£o contÃ©m a funÃ§Ã£o table.insert, que realiza isso)
 function scan(str_data)
 	assert(str_data ~= nil, "A string que deveria ser usada esta nula no comeco da funcao scan")
 	assert(type(str_data) == "string", "A string que deveria ser usada nao eh uma string no comeco da funcao scan")
@@ -48,10 +48,10 @@ function scan(str_data)
 	return word_list
 end
 
--- Recebe um vetor de palavras e retorna uma cópia sem
+-- Recebe um vetor de palavras e retorna uma cÃ³pia sem
 -- as palavras ignoradas (stop words)
--- PRE: word_list é um vetor não nulo e existe um arquivo no caminho "../stop_words.txt" (Verificação: existe uma assertiva garantindo isto)
--- POS: foi retornado um vetor que não possui nenhum elemento que esteja presente no vetor (Verificação: o último for presente na função garante isso)
+-- PRE: word_list Ã© um vetor nÃ£o nulo e existe um arquivo no caminho "../stop_words.txt" (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: foi retornado um vetor que nÃ£o possui nenhum elemento que esteja presente no vetor (VerificaÃ§Ã£o: o Ãºltimo for presente na funÃ§Ã£o garante isso)
 -- de palavras ignoradas (stop words) lido no arquivo stop_words.txt
 function remove_stop_words(word_list)
 	assert(word_list ~= nil, "O vetor passado por referencia para a funcao remove_stop_words esta nulo")
@@ -83,9 +83,9 @@ function remove_stop_words(word_list)
 end
 
 -- Recebe um vetor de palavras e retorna uma tabela associando
--- palavras a suas frequências de ocorrência
--- PRE: word_list é um vetor não nulo (Verificação: existe uma assertiva garantindo isto)
--- POS: foi retornada uma tabela contendo cada palavra associada a sua frequência (Verificação: word_freqs é uma tabela, preenchida com estas informações, que é sempre retornada)
+-- palavras a suas frequÃªncias de ocorrÃªncia
+-- PRE: word_list Ã© um vetor nÃ£o nulo (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: foi retornada uma tabela contendo cada palavra associada a sua frequÃªncia (VerificaÃ§Ã£o: word_freqs Ã© uma tabela, preenchida com estas informaÃ§Ãµes, que Ã© sempre retornada)
 function frequencies(word_list)
 	assert(word_list ~= nil, "O vetor passado por referencia para a funcao frequencies esta nulo")
 	assert(type(word_list) == "table", "O vetor passado por referencia para a funcao frequencies nao eh um table")
@@ -103,10 +103,10 @@ function frequencies(word_list)
     return word_freqs
 end
 
--- Recebe uma tabela de palavras e suas frequências
--- e retorna um vetor com os valores da tabela, ordenados pela frequência
--- PRE: word_freq é uma tabela não nula (Verificação: existe uma assertiva garantindo isto)
--- POS: foi retornado um vetor que contém os valores de word_freq, ordenados pela frequência (Verificação: a função table.sort realiza isso)
+-- Recebe uma tabela de palavras e suas frequÃªncias
+-- e retorna um vetor com os valores da tabela, ordenados pela frequÃªncia
+-- PRE: word_freq Ã© uma tabela nÃ£o nula (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: foi retornado um vetor que contÃ©m os valores de word_freq, ordenados pela frequÃªncia (VerificaÃ§Ã£o: a funÃ§Ã£o table.sort realiza isso)
 function sort(word_freq)
 	assert(word_freq ~= nil, "A tabela passada por referencia para a funcao sort esta nula")
 	assert(type(word_freq) == "table", "O vetor passado por referencia para a funcao sort nao eh um table")
@@ -125,9 +125,9 @@ end
 
 -- Recebe um vetor e um intervalo a ser filtrado,
 -- e retorna uma novo vetor contendo apenas os elementos do intervalo especificado
--- PRE: input_array não é nulo, range_min e range_max são números inteiros, range_min <= range_max (Verificação: existem assertivas garantindo isto)
--- POS: foi retornado o vetor contendo apenas os elementos do intervalo especificado (Verificação: o for deste método itera sobre o intervalo
--- especificado e adiciona ao vetor que é retornado os elementos do intervalo)
+-- PRE: input_array nÃ£o Ã© nulo, range_min e range_max sÃ£o nÃºmeros inteiros, range_min <= range_max (VerificaÃ§Ã£o: existem assertivas garantindo isto)
+-- POS: foi retornado o vetor contendo apenas os elementos do intervalo especificado (VerificaÃ§Ã£o: o for deste mÃ©todo itera sobre o intervalo
+-- especificado e adiciona ao vetor que Ã© retornado os elementos do intervalo)
 function filter_array(input_array, range_min, range_max)
 	assert(input_array ~= nil, "O vetor passado por referencia para a funcao filter_array esta nulo")
 	assert(range_min <= range_max, "O segundo parametro (range_min) e maior que o terceiro (range_max)")
@@ -144,10 +144,10 @@ function filter_array(input_array, range_min, range_max)
 	return filtered_array
 end
 
--- Recebe um vetor de palavras e frequências e imprime
--- cada entrada no formato "palavra" - "frequência", na ordem presente no vetor
--- PRE: word_freqs é um vetor não nulo (Verificação: existe uma assertiva garantindo isto)
--- POS: foram impressas todas as palavras/frequências presentes no vetor word_freqs (Verificação: o for presente na função realiza isso)
+-- Recebe um vetor de palavras e frequÃªncias e imprime
+-- cada entrada no formato "palavra" - "frequÃªncia", na ordem presente no vetor
+-- PRE: word_freqs Ã© um vetor nÃ£o nulo (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: foram impressas todas as palavras/frequÃªncias presentes no vetor word_freqs (VerificaÃ§Ã£o: o for presente na funÃ§Ã£o realiza isso)
 function print_all(word_freqs)
 	assert(word_freqs ~= nil, "O vetor passado por referencia para a funcao print_all esta nulo")
 	assert(type(word_freqs) == "table", "word_freqs nao eh um table no inicio da funcao print_all")
@@ -158,6 +158,10 @@ function print_all(word_freqs)
 end
 
 -- Programa
-assert(arg[1] ~= nil, "Nao foi passado um caminho para o arquivo")
+function main()
+	assert(arg[1] ~= nil, "Nao foi passado um caminho para o arquivo")
 
-xpcall(function() print_all(filter_array(sort(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(arg[1])))))), 0, 25)) end, function(errorInfo) print("Erro: " .. errorInfo) end)
+	xpcall(function() print_all(filter_array(sort(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(arg[1])))))), 0, 25)) end, function(errorInfo) print("Erro: " .. errorInfo) end)
+end
+
+main()
