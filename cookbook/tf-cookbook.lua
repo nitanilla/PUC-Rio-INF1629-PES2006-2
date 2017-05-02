@@ -1,21 +1,21 @@
 -- tf-cookbook.lua
 -- Autor: MV, RF
--- Versão: 0.1
--- Data da última modificação: 21/04/2017
+-- VersÃ£o: 0.1
+-- Data da Ãºltima modificaÃ§Ã£o: 21/04/2017
 -- Tamanho: 145 linhas
 
--- Dados mutáveis compartilhados
+-- Dados mutÃ¡veis compartilhados
 data = nil
 words = nil
 word_freqs = nil
 
--- Funções
+-- FunÃ§Ãµes
 
 -- Recebe um caminho para um arquivo e
--- armazena o conteúdo deste arquivo como uma string na variável global data
--- PRE: path_to_file é um caminho de arquivo válido (Verificação: existe uma assertiva garantindo isto)
--- POS: o conteúdo do arquivo lido foi armazenado como uma string na variável global data
--- (Verificação: a função read sempre retorna uma string referente ao conteúdo do arquivo aberto e esta string é armazenada na variável data)
+-- armazena o conteÃºdo deste arquivo como uma string na variÃ¡vel global data
+-- PRE: path_to_file Ã© um caminho de arquivo vÃ¡lido (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: o conteÃºdo do arquivo lido foi armazenado como uma string na variÃ¡vel global data
+-- (VerificaÃ§Ã£o: a funÃ§Ã£o read sempre retorna uma string referente ao conteÃºdo do arquivo aberto e esta string Ã© armazenada na variÃ¡vel data)
 function read_file(path_to_file)
 	local file = io.open(path_to_file, "r")
 	assert(file ~= nil, "Caminho do arquivo invalido")
@@ -23,19 +23,19 @@ function read_file(path_to_file)
 	file:close()
 end
 
--- Substitui todos os caracteres não-alfanuméricos da variável global data por espaços
--- PRE: data é uma string não nula (Verificação: existe uma assertiva garantindo isto)
--- POS: data foi atualizado substituindo os caracteres não-alfanuméricos
--- por espaços, e as letras maiúsculas por letras minúsculas (Verificação: gsub('%W',' ') transforma os caracteres não-numéricos
--- em espaços em branco, e lower() transforma os caracteres maiúsculos em minúsculos)
+-- Substitui todos os caracteres nÃ£o-alfanumÃ©ricos da variÃ¡vel global data por espaÃ§os
+-- PRE: data Ã© uma string nÃ£o nula (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: data foi atualizado substituindo os caracteres nÃ£o-alfanumÃ©ricos
+-- por espaÃ§os, e as letras maiÃºsculas por letras minÃºsculas (VerificaÃ§Ã£o: gsub('%W',' ') transforma os caracteres nÃ£o-numÃ©ricos
+-- em espaÃ§os em branco, e lower() transforma os caracteres maiÃºsculos em minÃºsculos)
 function filter_chars_and_normalize()
 	assert(data ~= nil, "A string que deveria ser filtrada esta nula no comeco da funcao filter_chars_and_normalize")
     data = data:gsub('%W',' '):lower()
 end
 
--- Procura por palavras na string data, preenchendo o vetor de palavras `words´ (usando espaço em branco como separador)
--- PRE: data é uma string não nula (Verificação: existe uma assertiva garantindo isto)
--- POS: a variável global words foi atualizada com as palavras da string data (Verificação: o for presente na função contém a função table.insert, que realiza isso)
+-- Procura por palavras na string data, preenchendo o vetor de palavras `wordsÂ´ (usando espaÃ§o em branco como separador)
+-- PRE: data Ã© uma string nÃ£o nula (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: a variÃ¡vel global words foi atualizada com as palavras da string data (VerificaÃ§Ã£o: o for presente na funÃ§Ã£o contÃ©m a funÃ§Ã£o table.insert, que realiza isso)
 function scan()
 	assert(data ~= nil, "A string que deveria ser usada esta nula no comeco da funcao scan")
 	local iterator = data:gmatch("%S+")
@@ -46,9 +46,9 @@ function scan()
 	end
 end
 
--- Remove as palavras ignoradas (stop words) do vetor (variável global) words
--- PRE: words é um vetor (variável global) e existe um arquivo no caminho "../stop_words.txt" (Verificação: existe uma assertiva garantindo isto)
--- POS: as palavras ignoradas (stop words) lidas no arquivo stop_words.txt foram removidas do vetor words (Verificação: o último for presente na função garante isso)
+-- Remove as palavras ignoradas (stop words) do vetor (variÃ¡vel global) words
+-- PRE: words Ã© um vetor (variÃ¡vel global) e existe um arquivo no caminho "../stop_words.txt" (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: as palavras ignoradas (stop words) lidas no arquivo stop_words.txt foram removidas do vetor words (VerificaÃ§Ã£o: o Ãºltimo for presente na funÃ§Ã£o garante isso)
 function remove_stop_words()
 	assert(words ~= nil, "O vetor words esta nulo no inicio da funcao remove_stop_words")
 	local file = io.open("../stop_words.txt", "r")
@@ -74,9 +74,9 @@ function remove_stop_words()
 	end
 end
 
--- Associa as palavras no vetor words a suas frequências de ocorrência, no vetor word_freqs
--- PRE: words é um vetor não nulo (Verificação: existe uma assertiva garantindo isto)
--- POS: word_freqs foi preenchido com uma tabela associando cada palavra a sua frequência (Verificação: word_freqs é uma tabela, preenchida com estas informações, que é sempre atualizada)
+-- Associa as palavras no vetor words a suas frequÃªncias de ocorrÃªncia, no vetor word_freqs
+-- PRE: words Ã© um vetor nÃ£o nulo (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: word_freqs foi preenchido com uma tabela associando cada palavra a sua frequÃªncia (VerificaÃ§Ã£o: word_freqs Ã© uma tabela, preenchida com estas informaÃ§Ãµes, que Ã© sempre atualizada)
 function frequencies()
 	assert(words ~= nil, "O vetor words esta nulo no inicio da funcao frequencies")
 	word_freqs = {}
@@ -90,10 +90,10 @@ function frequencies()
 	end
 end
 
--- Recebe uma tabela de palavras e suas frequências
--- e retorna um vetor com os valores da tabela, ordenados pela frequência
--- PRE: word_freqs é uma tabela não nula (Verificação: existe uma assertiva garantindo isto)
--- POS: o vetor word_freqs foi ordenado pela frequência (Verificação: a função table.sort realiza isso em um vetor temporário, que substitui o word_freqs)
+-- Recebe uma tabela de palavras e suas frequÃªncias
+-- e retorna um vetor com os valores da tabela, ordenados pela frequÃªncia
+-- PRE: word_freqs Ã© uma tabela nÃ£o nula (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: o vetor word_freqs foi ordenado pela frequÃªncia (VerificaÃ§Ã£o: a funÃ§Ã£o table.sort realiza isso em um vetor temporÃ¡rio, que substitui o word_freqs)
 function sort()
 	assert(word_freqs ~= nil, "A tabela passada por referencia para a funcao sort esta nula")
 	sorted_word_freqs = {}
@@ -110,8 +110,8 @@ end
 
 -- Recebe um intervalo a ser filtrado,
 -- e substitui o vetor word_freqs por um novo vetor contendo apenas os elementos do intervalo especificado
--- PRE: word_freqs não é nulo, range_min e range_max são números inteiros, range_min <= range_max (Verificação: existem assertivas garantindo isto)
--- POS: o vetor foi atualizado, e passou a conter apenas os elementos do intervalo especificado (Verificação: o for deste método itera sobre o intervalo
+-- PRE: word_freqs nÃ£o Ã© nulo, range_min e range_max sÃ£o nÃºmeros inteiros, range_min <= range_max (VerificaÃ§Ã£o: existem assertivas garantindo isto)
+-- POS: o vetor foi atualizado, e passou a conter apenas os elementos do intervalo especificado (VerificaÃ§Ã£o: o for deste mÃ©todo itera sobre o intervalo
 -- especificado e adiciona ao vetor que substitui word_freqs os elementos do intervalo)
 function filter_word_freqs(range_min, range_max)
 	assert(word_freqs ~= nil, "O vetor passado por referencia para a funcao filter_array esta nulo")
@@ -126,9 +126,9 @@ function filter_word_freqs(range_min, range_max)
 	word_freqs = filtered_array
 end
 
--- Imprime cada entrada do vetor word_freqs no formato "palavra" - "frequência", na ordem presente no vetor
--- PRE: word_freqs é um vetor não nulo (Verificação: existe uma assertiva garantindo isto)
--- POS: foram impressas todas as palavras/frequências presentes no vetor word_freqs (Verificação: o for presente na função realiza isso)
+-- Imprime cada entrada do vetor word_freqs no formato "palavra" - "frequÃªncia", na ordem presente no vetor
+-- PRE: word_freqs Ã© um vetor nÃ£o nulo (VerificaÃ§Ã£o: existe uma assertiva garantindo isto)
+-- POS: foram impressas todas as palavras/frequÃªncias presentes no vetor word_freqs (VerificaÃ§Ã£o: o for presente na funÃ§Ã£o realiza isso)
 function print_all()
 	assert(word_freqs ~= nil, "O vetor passado por referencia para a funcao print_all esta nulo")
 	for key,element in ipairs(word_freqs) do
@@ -137,11 +137,15 @@ function print_all()
 end
 
 -- Programa
-read_file(arg[1])
-filter_chars_and_normalize()
-scan()
-remove_stop_words()
-frequencies()
-sort()
-filter_word_freqs(0, 25)
-print_all()
+function main()
+	read_file(arg[1])
+	filter_chars_and_normalize()
+	scan()
+	remove_stop_words()
+	frequencies()
+	sort()
+	filter_word_freqs(0, 25)
+	print_all()
+end
+
+main()
